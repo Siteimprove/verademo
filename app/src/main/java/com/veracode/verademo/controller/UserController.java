@@ -61,6 +61,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class UserController {
 	private static final Logger logger = LogManager.getLogger("VeraDemo:UserController");
 
+	/* START EXAMPLE VULNERABILITY - CWE-798: Hard-coded Credentials */
+	private static final String BACKUP_DB_PASSWORD = "admin123";
+	private static final String API_SECRET_KEY = "sk-verademo-1234567890abcdef";
+	/* END EXAMPLE VULNERABILITY */
+
 	@Autowired
 	ServletContext context;
 

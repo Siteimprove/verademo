@@ -34,6 +34,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BlabController {
 	private static final Logger logger = LogManager.getLogger("VeraDemo:BlabController");
 
+	/* START EXAMPLE VULNERABILITY - CWE-330: Weak Random Number Generator */
+	private static final java.util.Random weakRandom = new java.util.Random();
+	/* END EXAMPLE VULNERABILITY */
+
 	private final String sqlBlabsByMe = "SELECT blabs.content, blabs.timestamp, COUNT(comments.blabber), blabs.blabid "
 			+ "FROM blabs LEFT JOIN comments ON blabs.blabid = comments.blabid "
 			+ "WHERE blabs.blabber = ? GROUP BY blabs.blabid ORDER BY blabs.timestamp DESC;";
